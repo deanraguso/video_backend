@@ -10,5 +10,7 @@ class User < ApplicationRecord
             return nil
         end
     end
+
+    has_many :videos
     
 end

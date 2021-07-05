@@ -5,6 +5,16 @@ class VideosController < ApplicationController
         render json: {videos: Video.all}
     end
 
+    def random
+        @video = Video.random
+        
+        if @video
+            render json: {video: @video}, status: 200
+        else
+            rander status: 404
+        end
+    end
+
     def create
         @video = current_user.videos.create(url: params[:url])
         if @video.save
